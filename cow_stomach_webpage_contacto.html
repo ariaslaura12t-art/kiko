@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Los Estómagos de las Vacas - Sistema Digestivo Rumiante</title>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .subtitle {
+            font-size: 1.4em;
+            color: #7f8c8d;
+            font-weight: 300;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(31, 38, 135, 0.5);
+        }
+
+        .stomach-card {
+            text-align: center;
+        }
+
+        .stomach-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+            color: white;
+            font-weight: bold;
+        }
+
+        .rumen { background: linear-gradient(135deg, #FF6B6B, #FF8E8E); }
+        .reticulum { background: linear-gradient(135deg, #4ECDC4, #6EE0D6); }
+        .omasum { background: linear-gradient(135deg, #45B7D1, #6CC8E8); }
+        .abomasum { background: linear-gradient(135deg, #96CEB4, #A8D8C3); }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-bottom: 10px;
+            font-size: 1.4em;
+        }
+
+        p {
+            color: #555;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .process-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 30px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .step {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .step:hover {
+            transform: scale(1.05);
+        }
+
+        .step-number {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .facts-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 30px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .fact-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .fact-item:hover {
+            transform: translateX(10px);
+        }
+
+        .interactive-diagram {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 30px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .diagram-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .stomach-diagram {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px;
+            position: relative;
+        }
+
+        .stomach-diagram:hover {
+            transform: scale(1.2) rotate(5deg);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .arrow {
+            font-size: 2em;
+            color: #34495e;
+            margin: 0 10px;
+        }
+
+        footer {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 30px;
+            color: #7f8c8d;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .arrow {
+                display: none;
+            }
+        }
+
+        .tooltip {
+            position: absolute;
+            background: rgba(0,0,0,0.9);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            display: none;
+            z-index: 1000;
+            max-width: 200px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>🐄 Los Estómagos de las Vacas</h1>
+<p class="subtitle">Descubre el fascinante sistema digestivo de los rumiantes</p>
+</header>
+<div class="main-content">
+<div class="card stomach-card">
+<div class="stomach-icon rumen">1</div>
+<h3>Rumen</h3>
+<p><strong>Capacidad:</strong> 100-120 litros</p>
+<p>El más grande de los cuatro compartimentos. Aquí las bacterias y microorganismos fermentan la celulosa de las plantas, convirtiendo el pasto en nutrientes aprovechables.</p>
+</div>
+<div class="card stomach-card">
+<div class="stomach-icon reticulum">2</div>
+<h3>Retículo</h3>
+<p><strong>Capacidad:</strong> 5 litros</p>
+<p>Conocido como "panal de abeja" por su estructura interna. Filtra partículas pequeñas y trabaja junto con el rumen en el proceso de fermentación.</p>
+</div>
+<div class="card stomach-card">
+<div class="stomach-icon omasum">3</div>
+<h3>Omaso</h3>
+<p><strong>Capacidad:</strong> 10 litros</p>
+<p>También llamado "libro" por sus pliegues internos. Absorbe agua y minerales de la comida parcialmente digerida antes de pasar al cuarto estómago.</p>
+</div>
+<div class="card stomach-card">
+<div class="stomach-icon abomasum">4</div>
+<h3>Abomaso</h3>
+<p><strong>Capacidad:</strong> 4 litros</p>
+<p>El "estómago verdadero" que funciona como el estómago humano, produciendo ácidos y enzimas para la digestión química de proteínas.</p>
+</div>
+</div>
+<div class="process-section">
+<h2>🔄 Proceso de Rumia</h2>
+<p>La rumia es un proceso único que permite a las vacas digerir eficientemente la celulosa de las plantas. Este proceso involucra regurgitar el alimento para masticarlo nuevamente.</p>
+<div class="process-steps">
+<div class="step">
+<div class="step-number">1</div>
+<h3>Ingestión</h3>
+<p>La vaca consume hierba y otros vegetales, masticándolos mínimamente antes de tragarlos.</p>
+</div>
+<div class="step">
+<div class="step-number">2</div>
+<h3>Fermentación</h3>
+<p>El alimento llega al rumen donde millones de microorganismos lo fermentan durante horas.</p>
+</div>
+<div class="step">
+<div class="step-number">3</div>
+<h3>Regurgitación</h3>
+<p>La vaca regurgita pequeñas porciones de alimento semidigerido llamado "bolo alimenticio".</p>
+</div>
+<div class="step">
+<div class="step-number">4</div>
+<h3>Re-masticación</h3>
+<p>La vaca mastica el bolo durante 40-60 segundos, triturándolo más finamente con sus molares.</p>
+</div>
+</div>
+</div>
+<div class="interactive-diagram">
+<h2>📊 Flujo Digestivo Interactivo</h2>
+<p>Pasa el cursor sobre cada estómago para ver más información</p>
+<div class="diagram-container">
+<div class="stomach-diagram rumen" data-info="Rumen: El fermentador principal donde viven billones de microorganismos">
+                    RUMEN
+                </div>
+<span class="arrow">→</span>
+<div class="stomach-diagram reticulum" data-info="Retículo: Filtra y ayuda en la regurgitación del alimento">
+                    RETÍCULO
+                </div>
+<span class="arrow">→</span>
+<div class="stomach-diagram omasum" data-info="Omaso: Absorbe agua y concentra los nutrientes">
+                    OMASO
+                </div>
+<span class="arrow">→</span>
+<div class="stomach-diagram abomasum" data-info="Abomaso: Digestión ácida similar al estómago humano">
+                    ABOMASO
+                </div>
+</div>
+<div class="tooltip" id="tooltip"></div>
+</div>
+<div class="facts-section">
+<h2>🧠 Datos Fascinantes</h2>
+<div class="fact-item">
+<strong>🦠 Ecosistema microbiano:</strong> El rumen contiene más de 200 especies diferentes de bacterias, protozoos y hongos que trabajan juntos para digerir la celulosa.
+            </div>
+<div class="fact-item">
+<strong>⏰ Tiempo de rumia:</strong> Las vacas pasan entre 6-8 horas al día rumiando, típicamente mientras descansan.
+            </div>
+<div class="fact-item">
+<strong>💧 Producción de saliva:</strong> Una vaca produce entre 100-200 litros de saliva al día para mantener el pH del rumen.
+            </div>
+<div class="fact-item">
+<strong>🌡️ Temperatura interna:</strong> La temperatura dentro del rumen se mantiene constante entre 38-42°C, ideal para los microorganismos.
+            </div>
+<div class="fact-item">
+<strong>🔄 Eficiencia digestiva:</strong> Este sistema permite a las vacas extraer hasta un 70% más de energía de las plantas que los animales no rumiantes.
+            </div>
+</div>
+<footer>
+<p>© 2025 - Sistema Digestivo de Rumiantes | Una maravilla de la evolución 🌱</p>
+<p>Contacto: ariaslauraalejandra95@gmail.com | Tel: +57 312 3663005</p></footer>
+</div>
+<script>
+        // Interactividad para el diagrama
+        const stomachDiagrams = document.querySelectorAll('.stomach-diagram');
+        const tooltip = document.getElementById('tooltip');
+
+        stomachDiagrams.forEach(diagram => {
+            diagram.addEventListener('mouseenter', (e) => {
+                const info = e.target.getAttribute('data-info');
+                tooltip.textContent = info;
+                tooltip.style.display = 'block';
+                tooltip.style.left = e.pageX + 10 + 'px';
+                tooltip.style.top = e.pageY - 10 + 'px';
+            });
+
+            diagram.addEventListener('mouseleave', () => {
+                tooltip.style.display = 'none';
+            });
+
+            diagram.addEventListener('mousemove', (e) => {
+                tooltip.style.left = e.pageX + 10 + 'px';
+                tooltip.style.top = e.pageY - 10 + 'px';
+            });
+        });
+
+        // Animación de entrada para las tarjetas
+        const cards = document.querySelectorAll('.card');
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        cards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(50px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            cardObserver.observe(card);
+        });
+
+        // Efecto de pulso en los números de los estómagos
+        const stomachIcons = document.querySelectorAll('.stomach-icon');
+        setInterval(() => {
+            stomachIcons.forEach((icon, index) => {
+                setTimeout(() => {
+                    icon.style.transform = 'scale(1.1)';
+                    setTimeout(() => {
+                        icon.style.transform = 'scale(1)';
+                    }, 200);
+                }, index * 300);
+            });
+        }, 5000);
+    </script>
+</body>
+</html>
